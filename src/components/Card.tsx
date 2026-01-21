@@ -14,8 +14,8 @@ export default function Card({data} :CardProps) {
           <Image
             src={data.poster_path ?? ""}
             alt="poster image"
-            height={500}
-            width={300}
+            height={300}
+            width={500}
             className="sm:rounded-t-lg group-hover:opacity-75 transition-opacity duration-300"
           />
           <div className="p-2">
