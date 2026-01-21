@@ -40,7 +40,7 @@ export default async function Home({ searchParams }: PageProps) {
   }
 
   const results = parsed.data.results;
-  
+
   return <div>
     <Results results = {results}/>
   </div>;
