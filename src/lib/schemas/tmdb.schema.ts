@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+/** Base CDN for TMDB images */
+const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
+
 /**
  * Single movie / tv item from TMDB
  */
@@ -11,10 +14,14 @@ export const TMDBItemSchema = z.object({
   name: z.string().optional(),
 
   overview: z.string().default(""),
-  poster_path: z.string().nullable(),
+
+  // Convert path → full CDN url
+  poster_path: z.string().nullable().transform((path) =>
+    path ? `${TMDB_IMAGE_BASE}${path}` : null
+  ),
 
   vote_average: z.number(),
-  vote_count: z.number().optional(),
+  vote_count: z.number().default(0),
 
   release_date: z.string().optional(),
   first_air_date: z.string().optional(),
