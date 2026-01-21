@@ -1,11 +1,15 @@
 'use client'
-
-import { MdLightMode, MdDarkMode } from "react-icons/md";
-
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 export function ThemeSwitch(){
   const {theme, setTheme, systemTheme} = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
@@ -16,12 +20,15 @@ export function ThemeSwitch(){
   const setDarkMode = () => {
     setTheme("dark")
   }
+
+  if (!mounted) return null;
+
   return (
-    <div suppressHydrationWarning>
+    <div>
       {
         currentTheme == "dark"
-        ? <MdDarkMode suppressHydrationWarning onClick={setLightMode} className="text-xl cursor-pointer hover:text-amber-500" />
-        : <MdLightMode suppressHydrationWarning onClick={setDarkMode} className="text-xl cursor-pointer hover:text-amber-500" />
+        ? <MdDarkMode onClick={setLightMode} className="text-xl cursor-pointer hover:text-amber-500" />
+        : <MdLightMode onClick={setDarkMode} className="text-xl cursor-pointer hover:text-amber-500" />
       }
     </div>
   )
