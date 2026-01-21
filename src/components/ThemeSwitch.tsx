@@ -20,8 +20,8 @@ export function ThemeSwitch(){
     <div suppressHydrationWarning>
       {
         currentTheme == "dark"
-        ? <MdDarkMode onClick={setLightMode} className="text-xl cursor-pointer hover:text-amber-500" />
-        : <MdLightMode onClick={setDarkMode} className="text-xl cursor-pointer hover:text-amber-500" />
+        ? <MdDarkMode suppressHydrationWarning onClick={setLightMode} className="text-xl cursor-pointer hover:text-amber-500" />
+        : <MdLightMode suppressHydrationWarning onClick={setDarkMode} className="text-xl cursor-pointer hover:text-amber-500" />
       }
     </div>
   )
