@@ -2,7 +2,7 @@
 
 :root {
   /* light mode */
-  --background: 255 255 255;   /* was default white */
+  --background: 245 247 250;     /* was default white */
   --foreground: 55 65 81;      /* gray-700 */
 }
 
