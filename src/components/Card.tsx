@@ -11,13 +11,18 @@ export default function Card({data} :CardProps) {
   return (
     <div className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:boder-slate-400 sm:m-2 transition-shadow duration-200">
         <Link href = {`/movie/${data.id}`}>
-          <Image
-            src={data.poster_path ?? ""}
-            alt="poster image"
-            height={300}
-            width={500}
-            className="sm:rounded-t-lg group-hover:opacity-75 transition-opacity duration-300"
-          />
+          {
+            (data.poster_path === null || data.poster_path.length === 0)
+            ? <div className="flex flex-col flex-1">
+            </div> 
+            : <Image
+              src={data.poster_path ?? ""}
+              alt="poster image"
+              height={300}
+              width={500}
+              className="sm:rounded-t-lg group-hover:opacity-75 transition-opacity duration-300"
+            />
+          }
           <div className="p-2">
             <p className="line-clamp-2 text-md"> 
               {data.overview}
